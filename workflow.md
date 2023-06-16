@@ -3,7 +3,7 @@
 ### Requirement
 
 - Node 18.16.0+
-  - Recommend checking out [NVM(Windows)](https://github.com/nvm-sh/nvm) or [FNM(Mac/Linux)](https://github.com/Schniz/fnm)
+  - Recommend checking out [FNM(Mac/Linux/Windows)](https://github.com/Schniz/fnm) or [NVM(Windows)](https://github.com/nvm-sh/nvm)
 - For .env file copy it from the .env.example and a link that I will send into our telegram group
 
 ### After cloning the project
