@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+// This is your Prisma schema file
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -8,4 +8,65 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        BigInt   @id @default(autoincrement())
+  username  String
+  email     String
+  password  String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  order     Order?
+}
+
+model ShopOwner {
+  id           BigInt   @id @default(autoincrement())
+  username     String
+  email        String
+  password     String
+  contact_info String
+  address      String
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  shop         Shop[]
+}
+
+model Shop {
+  id            BigInt    @id @default(autoincrement())
+  shop_owner_id BigInt    @unique
+  name          String
+  description   String
+  logo          Json
+  address       String
+  social_medias Json
+  phone_number  String
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @default(now()) @updatedAt @map(name: "updated_at")
+  shop_owner    ShopOwner @relation(fields: [shop_owner_id], references: [id])
+  order         Order[]
+}
+
+model Item {
+  id        BigInt   @id @default(autoincrement())
+  name      String
+  pictures  Json
+  materials Json
+  customize String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  order     Order[]
+}
+
+model Order {
+  id        BigInt   @id @default(autoincrement())
+  user_id   BigInt   @unique
+  shop_id   BigInt   @unique
+  item_id   BigInt   @unique
+  accepted  Boolean
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  user      User     @relation(fields: [user_id], references: [id])
+  shop      Shop     @relation(fields: [shop_id], references: [id])
+  item      Item     @relation(fields: [item_id], references: [id])
 }
