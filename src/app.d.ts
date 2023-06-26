@@ -7,6 +7,11 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	declare namespace NodeJS {
+		interface Global {
+			config: any;
+		}
+	}
 }
 
 export {};
