@@ -1,19 +1,17 @@
-<div class="h-screen flex flex-col items-center justify-center">
-    <div> 
-        <label class="label">
-            <span>Email</span>
-            <input class="input" title="Input (text)" type="text" placeholder="" />
-        </label>
-        <label class="label">
-            <span>Password</span>
-            <input class="input" title="Input (text)" type="text" placeholder="" />
-        </label>
-    </div>
-    <div>
-        <a href="/stores"><button type="button" class="btn-block btn variant-filled-surface my-8">Login </button></a>
-        <a href="/register"> or Register</a>
-    </div>
-    <div>
-        <p>Click <a href="/registerForOwners"> HERE </a> if you want to come sell with us</p>
-    </div>
-</div>
+<script lang="ts">
+	import { Input } from '$lib/componenets';
+</script>
+
+<h1 class="py-2 text-5xl font-bold">Sign Up</h1>
+<p class="text-lg">
+	Need an account? <a href="/register" class="font-semibold text-green-600">Create One</a>
+</p>
+<form action="?/login" method="POST" class="py-12 text-lg">
+	<Input type="email" label="Email" name="email" />
+	<Input type="password" label="Password" name="password" />
+
+	<button type="submit" class="my-4 w-full btn variant-filled btn-lg">Sign Up</button>
+</form>
+<p class="text-md">
+	Are you a seller? <a href="/" class="font-semibold text-green-600">Register Here</a>
+</p>

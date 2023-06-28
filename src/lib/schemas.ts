@@ -21,3 +21,8 @@ export const registerUserSchema = z
 			});
 		}
 	});
+
+export const loginUserSchema = z.object({
+	email: z.string().min(3).max(50).trim(),
+	password: z.string().min(8).max(24).trim()
+});
