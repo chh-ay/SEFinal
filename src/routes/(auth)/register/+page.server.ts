@@ -18,7 +18,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	register: async ({ request, locals }) => {
 		const { formData, errors } = await validateData(await request.formData(), registerUserSchema);
-		console.log(formData);
+		console.log(errors?.fieldErrors);
 
 		if (errors) {
 			return fail(400, {
