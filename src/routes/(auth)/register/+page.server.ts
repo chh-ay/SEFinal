@@ -1,10 +1,9 @@
 import { registerUserSchema } from '$lib/schemas.js';
-import { prisma } from '$lib/server/prisma.js';
 import { error, fail, redirect } from '@sveltejs/kit';
-import { superValidate } from 'sveltekit-superforms/server';
+import { validateData } from '$lib/utils';
+import type { Actions, PageServerLoad } from './$types';
 
-export const load = async ({ request, locals }) => {
-	const form = await superValidate(request, registerUserSchema);
+export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error: err } = await locals.supabase.auth.getSession();
 
 	if (err) {
@@ -14,25 +13,26 @@ export const load = async ({ request, locals }) => {
 	if (data.session) {
 		throw redirect(303, '/');
 	}
-
-	return { form };
 };
 
-export const actions = {
+export const actions: Actions = {
 	register: async ({ request, locals }) => {
-		const form = await superValidate(await request.formData(), registerUserSchema);
-		console.log(form);
+		const { formData, errors } = await validateData(await request.formData(), registerUserSchema);
+		console.log(formData);
 
-		if (!form.valid) {
-			return fail(400, { form });
+		if (errors) {
+			return fail(400, {
+				data: formData,
+				errors: errors.fieldErrors
+			});
 		}
 
 		const { data, error: err } = await locals.supabase.auth.signUp({
-			email: form.data.email,
-			password: form.data.password,
+			email: formData.email,
+			password: formData.password,
 			options: {
 				data: {
-					username: form.data.username
+					username: formData.username
 				}
 			}
 		});
