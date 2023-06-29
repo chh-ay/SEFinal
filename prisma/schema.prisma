@@ -23,15 +23,14 @@ model User {
 }
 
 model ShopOwner {
-  id           BigInt   @id @default(autoincrement())
-  username     String
-  email        String
-  password     String
-  contact_info String
-  address      String
-  createdAt    DateTime @default(now()) @map(name: "created_at")
-  updatedAt    DateTime @default(now()) @updatedAt @map(name: "updated_at")
-  shop         Shop[]
+  id        BigInt   @id @default(autoincrement())
+  username  String
+  email     String
+  password  String
+  address   String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  shop      Shop[]
 
   @@map("shop_owners")
 }
@@ -43,7 +42,7 @@ model Shop {
   description   String
   logo          Json
   address       String
-  social_medias Json
+  social_media  Json
   phone_number  String
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @updatedAt @map(name: "updated_at")
@@ -56,8 +55,8 @@ model Shop {
 model Item {
   id        BigInt   @id @default(autoincrement())
   name      String
-  pictures  Json
-  materials Json
+  picture   Json
+  material  Json
   customize String
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
