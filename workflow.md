@@ -5,6 +5,7 @@
 - Node 18.16.0+
   - Recommend checking out [FNM(Mac/Linux/Windows)](https://github.com/Schniz/fnm) or [NVM(Windows)](https://github.com/nvm-sh/nvm)
 - For .env file copy it from the .env.example and a link that I will send into our telegram group
+- Any images that you wanna use make sure it's in jpg unless it has a transparent background then save it as png.
 
 ### After cloning the project
 
