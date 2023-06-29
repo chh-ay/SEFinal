@@ -1,9 +1,11 @@
 <script lang="ts">
+	import navBar from '../lib/componenets/navBar.svelte'
 	import '../theme.postcss';
 	import '../app.postcss';
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 	import { onMount } from 'svelte';
 	import { invalidate } from '$app/navigation';
+	import NavBar from '../lib/componenets/navBar.svelte'
 
 	export let data;
 
@@ -22,7 +24,7 @@
 		return () => subscription.unsubscribe();
 	});
 </script>
-
+<NavBar />
 <!-- (header) -->
 <!-- (sidebarLeft) -->
 <!-- (pageHeader) -->
