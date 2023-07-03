@@ -6,7 +6,7 @@
 	<div class="basis-3/5">
 		<img src={img} class="w-full h-full" alt="" />
 	</div>
-	<div class="p-32 basis-2/5">
+	<div class="px-32 pt-40 basis-2/5">
 		<slot />
 	</div>
 </div>

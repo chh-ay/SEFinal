@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex h-full">
-	<div class="p-32 basis-2/5">
+	<div class="px-32 pt-40 basis-2/5">
 		<slot />
 	</div>
 	<div class="basis-3/5">

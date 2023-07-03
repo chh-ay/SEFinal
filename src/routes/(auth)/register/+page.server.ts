@@ -2,6 +2,7 @@ import { registerUserSchema } from '$lib/schemas.js';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { validateData } from '$lib/utils';
 import type { Actions, PageServerLoad } from './$types';
+import { profileType } from '$lib/constant';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error: err } = await locals.supabase.auth.getSession();
@@ -18,7 +19,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	register: async ({ request, locals }) => {
 		const { formData, errors } = await validateData(await request.formData(), registerUserSchema);
-		console.log(errors?.fieldErrors);
 
 		if (errors) {
 			return fail(400, {
@@ -32,12 +32,11 @@ export const actions: Actions = {
 			password: formData.password,
 			options: {
 				data: {
-					username: formData.username
+					username: formData.username,
+					type: profileType.CUSTOMER
 				}
 			}
 		});
-
-		console.log(data);
 
 		if (err) {
 			throw error(500, err.message);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Input } from '$lib/componenets';
+	import { Button, Input } from '$lib/componenets';
 	export let form;
 </script>
 
@@ -12,7 +12,7 @@
 		type="text"
 		label="Username"
 		id="username"
-		class="input {form?.errors?.username ? 'input-error' : 'input-group'}"
+		class="input p-4  {form?.errors?.username ? 'input-error' : 'input-group'}"
 		value={form?.data?.username}
 	/>
 	{#if form?.errors.username}
@@ -22,7 +22,7 @@
 		type="email"
 		label="Email"
 		id="email"
-		class="input {form?.errors?.email ? 'input-error' : 'input-group'}"
+		class="input p-4  {form?.errors?.email ? 'input-error' : 'input-group'}"
 		value={form?.data?.email}
 	/>
 	{#if form?.errors.email}
@@ -32,7 +32,7 @@
 		type="password"
 		label="Password"
 		id="password"
-		class="input {form?.errors?.password ? 'input-error' : 'input-group'}"
+		class="input  p-4 {form?.errors?.password ? 'input-error' : 'input-group'}"
 		value={form?.data?.password}
 	/>
 	{#if form?.errors.password}
@@ -42,15 +42,12 @@
 		type="password"
 		label="Confirm Password"
 		id="passwordConfirm"
-		class="input {form?.errors?.passwordConfirm ? 'input-error' : 'input-group'}"
+		class="input  p-4 {form?.errors?.passwordConfirm ? 'input-error' : 'input-group'}"
 		value={form?.data?.passwordConfirm}
 	/>
 	{#if form?.errors.passwordConfirm}
 		<span class="ml-2 text-xs text-error-900">{form?.errors.passwordConfirm[0]}</span>
 	{/if}
 
-	<button type="submit" class="my-4 w-full btn variant-filled btn-lg">Sign Up</button>
+	<Button btn="Register" />
 </form>
-<p class="text-md">
-	Are you a seller? <a href="/" class="font-semibold text-green-600">Register Here</a>
-</p>

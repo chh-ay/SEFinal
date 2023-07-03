@@ -30,8 +30,6 @@ export const actions: Actions = {
 			password: formData.password
 		});
 
-		console.log(data);
-
 		if (err) {
 			throw error(500, err.message);
 		}
