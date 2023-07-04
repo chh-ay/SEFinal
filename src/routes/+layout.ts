@@ -1,6 +1,6 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit';
-import type { Database } from '$lib/database';
+import type { Database } from '$lib/database.type';
 
 export const load = async ({ fetch, data, depends }) => {
   depends('supabase:auth');
@@ -16,5 +16,10 @@ export const load = async ({ fetch, data, depends }) => {
     data: { session }
   } = await supabase.auth.getSession();
 
-  return { supabase, session };
+  let profile_type = null;
+  if (session) {
+    profile_type = session.user.user_metadata.type;
+  }
+
+  return { supabase, session, profile_type };
 };

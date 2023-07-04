@@ -29,9 +29,6 @@ export const actions: Actions = {
 			email: formData.email,
 			password: formData.password
 		});
-
-		console.log(data);
-
 		if (err) {
 			throw error(500, err.message);
 		}

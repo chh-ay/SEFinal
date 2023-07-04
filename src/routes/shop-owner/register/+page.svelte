@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Input } from '$lib/componenets';
+	import { Input, Button } from '$lib/componenets';
 	export let form;
 </script>
 
@@ -7,7 +7,7 @@
 <p class="text-lg">
 	Have an account? <a href="/login" class="font-semibold text-green-600">Sign In</a>
 </p>
-<form action="?/register" method="POST" class="py-8 text-lg">
+<form action="?/register" method="POST" class="py-4 text-lg">
 	<Input
 		type="text"
 		label="Username"
@@ -27,6 +27,15 @@
 	/>
 	{#if form?.errors.email}
 		<span class="ml-2 text-xs text-error">{form?.errors.email}</span>
+	{/if}
+	<Input
+		type="text"
+		label="Address"
+		id="address"
+		class="input input-bordered w-full {form?.errors?.address ? 'input-error' : ''}"
+	/>
+	{#if form?.errors.address}
+		<span class="ml-2 text-xs text-error">{form?.errors.address}</span>
 	{/if}
 	<Input
 		type="password"
