@@ -22,11 +22,11 @@
 				class="p-2 mt-3 w-52 shadow menu menu-sm dropdown-content z-[1] bg-base-100 rounded-box"
 			>
 				<li>
-					<a href="/profile" class="justify-between"> Profile </a>
+					<a href="/profile" class="text-xl"> Profile </a>
 				</li>
 				<li>
-					<form action="/logout" method="POST" class="justify-between">
-						<button type="submit" class="btn">Logout</button>
+					<form action="/logout" method="POST" class="text-xl">
+						<button class="btn-block">Logout</button>
 					</form>
 				</li>
 			</ul>
