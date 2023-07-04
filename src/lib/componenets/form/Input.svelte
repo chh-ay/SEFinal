@@ -3,7 +3,7 @@
 	export let id: string;
 </script>
 
-<label for={id} class="pt-4">
-	<span class="pl-2">{label}</span>
-	<input name={id} {...$$restProps} />
+<label for={id} class="label mt-4">
+	<span class="label-text text-lg">{label}</span>
 </label>
+<input name={id} {...$$restProps} />

@@ -11,26 +11,28 @@ datasource db {
 }
 
 model User {
-  id        BigInt   @id @default(autoincrement())
-  username  String
-  email     String
-  password  String
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
-  order     Order?
+  id           BigInt   @id @default(autoincrement())
+  username     String
+  email        String
+  password     String
+  profile_type String
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  order        Order?
 
   @@map("users")
 }
 
 model ShopOwner {
-  id        BigInt   @id @default(autoincrement())
-  username  String
-  email     String
-  password  String
-  address   String
-  createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
-  shop      Shop[]
+  id           BigInt   @id @default(autoincrement())
+  username     String
+  email        String
+  password     String
+  address      String
+  profile_type String
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  shop         Shop[]
 
   @@map("shop_owners")
 }
