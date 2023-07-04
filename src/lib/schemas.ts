@@ -51,7 +51,7 @@ export const registerStoreOwnerSchema = z
 			.max(50, { message: 'Username must contain at most 50 character(s)' })
 			.trim(),
 		email: z.string().email().trim(),
-		address: z.string().trim(),
+		address: z.string().min(1, { message: 'Address is required' }).trim(),
 		password: z
 			.string()
 			.min(8, { message: 'Password must contain at least 8 character(s)' })

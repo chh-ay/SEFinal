@@ -16,5 +16,10 @@ export const load = async ({ fetch, data, depends }) => {
     data: { session }
   } = await supabase.auth.getSession();
 
-  return { supabase, session };
+  let profile_type = null;
+  if (session) {
+    profile_type = session.user.user_metadata.type;
+  }
+
+  return { supabase, session, profile_type };
 };

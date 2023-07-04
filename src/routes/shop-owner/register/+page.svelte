@@ -7,7 +7,7 @@
 <p class="text-lg">
 	Have an account? <a href="/login" class="font-semibold text-green-600">Sign In</a>
 </p>
-<form action="?/register" method="POST" class="py-8 text-lg">
+<form action="?/register" method="POST" class="py-4 text-lg">
 	<Input
 		type="text"
 		label="Username"

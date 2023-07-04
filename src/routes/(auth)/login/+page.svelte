@@ -8,7 +8,7 @@
 <p class="text-lg">
 	Need an account? <a href="/register" class="font-semibold text-green-600">Create One</a>
 </p>
-<form action="?/login" method="POST" class=" text-lg">
+<form action="?/login" method="POST" class="text-lg">
 	<Input
 		type="email"
 		label="Email"

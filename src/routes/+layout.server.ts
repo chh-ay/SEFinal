@@ -1,5 +1,6 @@
-export const load = async ({ locals: { getSession } }) => {
+export const load = async ({ locals: { getSession, getProfile } }) => {
 	return {
-		session: await getSession()
+		session: await getSession(),
+		profile_type: await getProfile()
 	};
 };

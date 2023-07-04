@@ -17,12 +17,12 @@ export const handle: Handle = async ({ event, resolve }) => {
 		return session;
 	};
 
-	event.locals.profile = async () => {
+	event.locals.getProfile = async () => {
 		const {
 			data: { session }
 		} = await event.locals.supabase.auth.getSession();
 		if (session) {
-			return { type: session.user.user_metadata.type };
+			return session.user.user_metadata.type;
 		}
 	};
 

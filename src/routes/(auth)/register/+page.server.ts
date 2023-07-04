@@ -6,7 +6,6 @@ import { profileType } from '$lib/constant';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error: err } = await locals.supabase.auth.getSession();
-
 	if (err) {
 		throw error(500, err?.message);
 	}

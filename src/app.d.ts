@@ -12,7 +12,7 @@ declare global {
 		interface Locals {
 			supabase: SupabaseClient<Database>;
 			getSession(): Promise<Session | null>;
-			profile: Promise<{ type: string } | undefined>;
+			getProfile(): Promise<string>;
 		}
 		interface PageData {
 			session: Session | null;
@@ -25,4 +25,4 @@ declare global {
 	}
 }
 
-export {};
+export { };
