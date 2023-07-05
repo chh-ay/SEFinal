@@ -35,22 +35,27 @@ export const actions: Actions = {
 			throw error(500, err.message);
 		}
 
-		const users = await prisma.shopOwner.findMany({
-			where: {
-				username: data.user.user_metadata.username
-			}
-		});
+		if (data.user.user_metadata.type === 'shop-owner') {
+			const users = await prisma.shopOwner.findMany({
+				where: {
+					username: data.user.user_metadata.username
+				}
+			});
 
-		const shop = await prisma.shop.findUnique({
-			where: {
-				id: users[0].id
+			if (users) {
+				const shop = await prisma.shop.findUnique({
+					where: {
+						id: users[0].id
+					}
+				});
+				if (!shop) {
+					throw redirect(303, '/shop/set-up');
+				} else {
+					throw redirect(303, '/shop-owner/dashboard');
+				}
 			}
-		});
-
-		if (!shop) {
-			throw redirect(303, '/shop/register');
+		} else {
+			throw redirect(303, '/');
 		}
-
-		throw redirect(303, '/');
 	}
 };

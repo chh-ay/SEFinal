@@ -2,14 +2,16 @@
  * @type {import('tailwindcss').Config}
  */
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	darkMode: 'class',
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		require('path').join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}')
+	],
 
-	daisyui: {
-		themes: ['light'],
-		darkTheme: 'light'
-	},
-
-	plugins: [require('@tailwindcss/forms'), require('daisyui')]
+	plugins: [
+		require('@tailwindcss/forms'),
+		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()
+	]
 };
 
 module.exports = config;

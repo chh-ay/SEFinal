@@ -16,7 +16,7 @@
 		value={form?.data?.username}
 	/>
 	{#if form?.errors.username}
-		<span class="ml-2 text-xs text-error">{form?.errors.username}</span>
+		<span class="ml-2 text-xs text-error-900">{form?.errors.username}</span>
 	{/if}
 	<Input
 		type="email"
@@ -26,7 +26,7 @@
 		value={form?.data?.email}
 	/>
 	{#if form?.errors.email}
-		<span class="ml-2 text-xs text-error">{form?.errors.email}</span>
+		<span class="ml-2 text-xs text-error-900">{form?.errors.email}</span>
 	{/if}
 	<Input
 		type="password"
@@ -36,7 +36,7 @@
 		value={form?.data?.password}
 	/>
 	{#if form?.errors.password}
-		<span class="ml-2 text-xs text-error">{form?.errors.password[0]}</span>
+		<span class="ml-2 text-xs text-error-900">{form?.errors.password[0]}</span>
 	{/if}
 	<Input
 		type="password"
@@ -46,7 +46,7 @@
 		value={form?.data?.passwordConfirm}
 	/>
 	{#if form?.errors.passwordConfirm}
-		<span class="ml-2 text-xs text-error">{form?.errors.passwordConfirm[0]}</span>
+		<span class="ml-2 text-xs text-error-900">{form?.errors.passwordConfirm[0]}</span>
 	{/if}
 
 	<Button btn="Register" />
