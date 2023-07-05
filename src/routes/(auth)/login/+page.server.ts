@@ -2,6 +2,7 @@ import { loginUserSchema } from '$lib/schemas';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { validateData } from '$lib/utils';
 import type { Actions, PageServerLoad } from './$types';
+import { prisma } from '$lib/server/prisma';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const { data, error: err } = await locals.supabase.auth.getSession();
@@ -29,8 +30,25 @@ export const actions: Actions = {
 			email: formData.email,
 			password: formData.password
 		});
+
 		if (err) {
 			throw error(500, err.message);
+		}
+
+		const users = await prisma.shopOwner.findMany({
+			where: {
+				username: data.user.user_metadata.username
+			}
+		});
+
+		const shop = await prisma.shop.findUnique({
+			where: {
+				id: users[0].id
+			}
+		});
+
+		if (!shop) {
+			throw redirect(303, '/shop/register');
 		}
 
 		throw redirect(303, '/');

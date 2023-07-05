@@ -6,5 +6,5 @@ export const POST: RequestHandler = async ({ locals }) => {
   if (err) {
     throw error(500, err.message);
   }
-  throw redirect(303, '/login');
+  throw redirect(303, '/');
 };
